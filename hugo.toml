@@ -1,7 +1,7 @@
 baseURL = 'https://www.mzzll.com/'
 languageCode = 'en-us'
 title = 'Angelo Mozzillo'
-copyright = "© mzll"
+copyright = "© mzzll"
 pygmentsstyle = "monokai"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
