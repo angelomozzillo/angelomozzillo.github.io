@@ -1,4 +1,96 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://angelomozzillo.github.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = 'archie'
+title = 'Angelo Mozzillo'
+copyright = "© mzll"
+pygmentsstyle = "monokai"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+
+[params]
+	mode="auto"
+	useCDN=false
+    bio = "I am a PhD Student at the [University of Modena and Reggio Emilia](https://www.unimore.it) with a research grant founded by [Leonardo S.p.A](https://www.leonardo.com). My research interests include data preparation and big data management for AI."
+    bioImage = "/img/profile.jpeg"
+
+
+  [[params.interests]]
+    name = "Big Data Management"
+  [[params.interests]]
+    name = "Data Prep"
+  [[params.interests]]
+    name = "LLM for Databases"
+  [[params.interests]]
+    name = "Agents"
+
+[[params.news]]
+title = "I will present 'Evaluation of Dataframe Libraries for Data Preparation on a Single Machine' at [EDBT2025](https://edbticdt2025.upc.edu)"
+
+[[params.publications]]
+title = "Maximizing Efficiency in Existing Data Preparation Pipelines"
+link = "https://ceur-ws.org/Vol-3478/paper12.pdf"
+conf = "SEBD"
+year = "2023"
+
+[[params.publications]]
+title = "The Future of Sustainable Data Preparation"
+link = "https://iris.uniroma1.it/bitstream/11573/1726107/1/Pernici_Future-sustainable_2024.pdf"
+conf = "SEBD"
+year = "2024"
+
+[[params.publications]]
+title = "Evaluation of Dataframe Libraries for Data Preparation on a Single Machine"
+link = "https://openproceedings.org/2025/conf/edbt/paper-96.pdf"
+conf = "EDBT"
+year = "2025"
+
+[[params.projects]]
+title = "🍱 BENTO - Framework for Dataframe Evaluation"
+link = "https://github.com/dbmodena/bento"
+
+
+
+[[params.social]]
+name = "Email"
+icon = "mail2"
+url = "angelo.mozzillo@unimore.it"
+
+[[params.social]]
+name = "Scholar"
+icon = "scholar"
+url = "https://scholar.google.com/citations?user=8OkttksAAAAJ&hl"
+
+[[params.social]]
+name = "GitHub"
+icon = "githu"
+url = "https://github.com/angelomozzillo"
+
+[[params.social]]
+name = "X"
+icon = "x"
+url = "https://twitter.com/mozzillo99_/"
+
+[[params.social]]
+name = "dblp"
+icon = "dblp"
+url = "https://dblp.org/pid/354/1468.html"
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "News"
+url = "/news"
+weight = 2
+
+[[menu.main]]
+name = "Publications"
+url = "/publications"
+weight = 3
+
+[[menu.main]]
+name = "Projects"
+url = "/projects"
+weight = 4

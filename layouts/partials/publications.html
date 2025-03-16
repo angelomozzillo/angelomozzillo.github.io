@@ -1,0 +1,18 @@
+{{ with .Site.Params.Publications }}
+<div class="publications">
+    {{ $sortedPublications := sort . "year" "desc" }}
+    {{ $currentYear := "" }}
+
+    <ul>
+        {{ range $sortedPublications }}
+        {{ if ne $currentYear .year }}
+        {{ if ne $currentYear "" }}</ul>{{ end }}
+    <span class="pub-year">{{ .year }}</span>
+    <ul>
+        {{ $currentYear = .year }}
+        {{ end }}
+        <li><a href="{{ .link }}" target="_blank">{{ .title }}</a></li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}

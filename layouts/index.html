@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+{{ partial "header.html" . }}
+
+<body>
+	<div class="content">
+		{{ partial "head.html" . }}
+
+		<main class="list">
+			<div class="site-description">
+				<!-- Lists Wrapper -->
+				<div class="list">
+					{{ with .Site.Params.Bio }}
+					<p>
+						{{ with $.Site.Params.BioImage }}
+						<img class="bio-image" src="{{ . }}" alt="Profile Image"
+							style="float: right; margin-left: 15px; width: 180px; height: auto; border-radius: 50%;">
+						{{ end }}
+					<h2>Short Bio</h2>
+					{{ . | markdownify }}
+					</p>
+					{{ end }}
+
+					<!-- Organizations -->
+					{{ with .Site.Params.Organizations }}
+					<strong>Organizations & Affiliations</strong>
+					<ul>
+						{{ range . }}
+						<li><a href="{{ .url }}" target="_blank">{{ .name }}</a></li>
+						{{ end }}
+					</ul>
+					{{ end }}
+
+					<!-- Interests -->
+					{{ with .Site.Params.Interests }}
+					<div class="interests-tags">
+						{{ range . }}
+						<span class="interest-tag">{{ .name }}</span>
+						{{ end }}
+					</div>
+					{{ end }}
+
+					<!-- Education -->
+					{{ with .Site.Params.Education.Courses }}
+					<strong>Education</strong>
+					<ul>
+						{{ range . }}
+						<li><strong>{{ .course }}</strong><br>{{ .institution }}, {{ .year }}</li>
+						{{ end }}
+					</ul>
+					{{ end }}
+
+				</div> <!-- End .list -->
+
+			</div> <!-- End .site-description -->
+
+			<!-- News Section -->
+			{{ with .Site.Params.News }}
+			<div class="news">
+				<h2>News</h2>
+				<ul>
+					{{ range . }}
+					<li>
+						{{ .title | markdownify }}
+					</li>
+					{{ end }}
+				</ul>
+				<p><a href="/projects">View old news →</a></p>
+			</div>
+			{{ end }}
+
+
+
+
+			<!-- Publications Section -->
+			{{ $publications := .Site.Params.Publications }}
+			{{ $sortedPublications := sort $publications "year" "desc" }}
+			{{ $latestPublications := first 3 $sortedPublications }}
+			{{ $currentYear := "" }}
+
+			<div class="publications-section">
+				<h2>Latest Publications</h2>
+				<ul class="publications-list">
+					{{ range $latestPublications }}
+					{{ if ne $currentYear .year }}
+					{{ if ne $currentYear "" }}</ul>{{ end }}
+				<ul>
+					{{ $currentYear = .year }}
+					{{ end }}
+					<li><strong>{{ .conf }}{{ substr (string .year) -2 }}</strong>-<a href="{{ .link }}"
+							target="_blank">{{ .title }}</a></li>
+					{{ end }}
+				</ul>
+
+				<!-- View All Publications Button -->
+				<div style="margin-top: 20px;">
+					<a href="/publications" class="view-all-button">View All Publications →</a>
+				</div>
+			</div>
+
+
+			<!-- Projects Section -->
+			{{ with .Site.Params.Projects }}
+			<div class="projects">
+				<h2>Projects</h2>
+				<ul>
+					{{ range . }}
+					<li>
+						<a href="{{ .link }}" target="_blank">{{ .title }}</a>
+					</li>
+					{{ end }}
+				</ul>
+				<p><a href="/projects">View all projects →</a></p>
+			</div>
+			{{ end }}
+
+
+			{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+			{{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
+			{{ range $paginator.Pages }}
+			<section class="list-item">
+				<h1 class="title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h1>
+				<time>{{ dateFormat ":date_medium" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end
+					}}</time>
+				<br>{{ template "partials/pagedescription.html" . }}
+				<a class="readmore" href="{{ .RelPermalink }}">Read more ⟶</a>
+			</section>
+			{{ end }}
+			{{ template "partials/paginator.html" . }}
+		</main>
+		{{ partial "footer.html" . }}
+	</div>
+
+</body>
+
+</html>

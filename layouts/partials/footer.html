@@ -1,0 +1,19 @@
+<footer>
+  <div style="display:flex">
+    {{- range .Site.Params.Social -}}
+    {{- $customIcon := printf "/icons/%s.svg" .icon -}}
+    <a class="soc" href="{{ .url }}" rel="me" title="{{ .name }}">
+      {{- if fileExists (printf "static/%s" $customIcon) -}}
+      <img src="{{ $customIcon | relURL }}" alt="{{ .name }} icon" width="24" height="24">
+      {{- else -}}
+      {{ template "feathericon" (dict "Icon" .icon "UseCDN" $.Site.Params.useCDN) }}
+      {{- end -}}
+    </a>
+    <a class="border"></a>
+    {{- end -}}
+  </div>
+  <div class="footer-info">
+    {{ dateFormat "2006" now }} {{ with .Site.Copyright }} {{ . }} | {{ end }}
+    Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
