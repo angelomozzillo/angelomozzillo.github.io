@@ -53,7 +53,7 @@ link = "https://github.com/dbmodena/bento"
 [[params.social]]
 name = "Email"
 icon = "mail2"
-url = "angelo.mozzillo@unimore.it"
+url = "mailto:angelo.mozzillo@unimore.it"
 
 [[params.social]]
 name = "Scholar"
