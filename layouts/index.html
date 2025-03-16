@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<meta name="description" content="Angelo Mozzillo - Unimore, PhD Student in ICT, Leonardo S.p.A">
+<meta name="keywords" content="Angelo Mozzillo, unimore, PhD">
+<meta name="author" content="Angelo Mozzillo">
+<meta property="og:title" content="Angelo Mozzillo">
+<meta property="og:description" content="Angelo Mozzillo - Unimore, PhD Student in ICT, Leonardo S.p.A">
+<meta property="og:url" content="https://mzzll.com/">
+<meta property="og:type" content="website">
 <html>
 {{ partial "header.html" . }}
 
@@ -14,12 +21,13 @@
 					<p>
 						{{ with $.Site.Params.BioImage }}
 						<img class="bio-image" src="{{ . }}" alt="Profile Image"
-							style="float: right; margin-left: 15px; width: 180px; height: 180px; border-radius: 50%;">
+							style="float: right; margin-left: 15px; width: 180px; height: 180px; border-radius: 50%; object-fit: cover;">
 						{{ end }}
 					<h2>Short Bio</h2>
 					{{ . | markdownify }}
 					</p>
 					{{ end }}
+					
 
 					<!-- Organizations -->
 					{{ with .Site.Params.Organizations }}
@@ -53,7 +61,7 @@
 				</div> <!-- End .list -->
 
 			</div> <!-- End .site-description -->
-
+			<hr>
 			<!-- News Section -->
 			{{ with .Site.Params.News }}
 			<div class="news">
