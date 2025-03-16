@@ -5,7 +5,7 @@ copyright = "© mzzll"
 pygmentsstyle = "monokai"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
-
+canonifyURLs = true
 
 [params]
 	mode="auto"
